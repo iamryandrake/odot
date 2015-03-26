@@ -22,4 +22,7 @@ gem 'spring',        group: :development
 
 gem 'rspec-rails',   group: :development,   group: :test
 
-gem 'capybara',   group: :test
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
+end
