@@ -4,6 +4,11 @@ gem 'rails', '4.1.5'
 
 gem 'sqlite3'
 
+# Use SCSS for stylesheets
+gem 'sprockets-rails'
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'sass-rails', '~> 4.0.3'
+
 gem 'sass-rails', '~> 4.0.3'
 
 gem 'uglifier', '>= 1.3.0'
