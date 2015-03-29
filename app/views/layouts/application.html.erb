@@ -8,13 +8,9 @@
 </head>
 <body>
 
-  <% flash.each do |type, message| %>
-    <div class="alert flash <%= type %>">
-      <%= message %>
-    </div>
-  <% end %>
+  <%= render partial: "layouts/flash" %>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
