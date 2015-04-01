@@ -13,14 +13,12 @@ class Api::TodoListsController < ApplicationController
   def create
     list = TodoList.new(list_params)
     if list.save
-      render json:  {
-        status: 200,
+      render status: 200, json:  {
         message: "Successfully created Todo list.",
         todo_list: list
       }.to_json
     else
-      render json:  {
-        status: 500,
+      render status: 422, json:  {
         errors: list.errors
       }.to_json
     end
@@ -29,14 +27,12 @@ class Api::TodoListsController < ApplicationController
   def update
     list = TodoList.find(params[:id])
     if list.update(list_params)
-      render json: {
-        status: 200,
+      render status: 200, json: {
         message: "Successfully updated Todo list.",
         todo_list: list
       }.to_json
     else
-      render json: {
-        status: 500,
+      render status: 422, json: {
         message: "Couldn't update Todo list.",
         todo_list: list
       }.to_json
@@ -44,11 +40,14 @@ class Api::TodoListsController < ApplicationController
 
   def destroy
     list  = TodoList.find(params[:id])
-    list.destroy
-    render json: {
-      status: 200,
-      message: "Successfully deleted Todo list."
-    }.to_json
+    if list.destroy
+      render status: 200, json: {
+        message: "Successfully deleted Todo list."
+      }.to_json
+    else
+      render status: 422, json: {
+        message: "Unable to delete your Todo list at this time."
+      }.to_json
   end
 
   private
