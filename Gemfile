@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'sprockets-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'sass-rails', '~> 4.0.3'
+gem 'font-awesome-sass'
 
 gem 'sass-rails', '~> 4.0.3'
 
@@ -25,11 +26,20 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'spring',        group: :development
 
-gem 'rspec-rails',   group: :development,   group: :test
+group :development do
+  gem 'spring'
+  gem 'quiet_assets'
+end
+
+
+group :development,  :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
 group :test do
   gem 'capybara'
+  gem 'capybara-email'
   gem 'shoulda-matchers'
 end
