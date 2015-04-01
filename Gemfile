@@ -20,8 +20,6 @@ gem 'jquery-rails'
 
 gem 'turbolinks'
 
-gem 'devise'
-
 gem 'jbuilder', '~> 2.0'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
