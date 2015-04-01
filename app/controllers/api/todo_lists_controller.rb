@@ -7,7 +7,7 @@ class Api::TodoListsController < ApplicationController
 
   def show
     list = TodoList.find(params[:id])
-    render json: list
+    render json: list.as_json(include:[:todo_items])
   end
 
   def create
@@ -36,18 +36,22 @@ class Api::TodoListsController < ApplicationController
         message: "Couldn't update Todo list.",
         todo_list: list
       }.to_json
+    end
   end
 
   def destroy
     list  = TodoList.find(params[:id])
     if list.destroy
       render status: 200, json: {
-        message: "Successfully deleted Todo list."
+        message: "Successfully deleted Todo list.",
+        todo_list: list
       }.to_json
     else
       render status: 422, json: {
-        message: "Unable to delete your Todo list at this time."
+        message: "Unable to delete your Todo list at this time.",
+        todo_list: list
       }.to_json
+    end
   end
 
   private
